@@ -156,7 +156,7 @@ def _search_single_query(page, query: dict) -> list[dict]:
     # Set up response interception
     page.on("response", on_response)
 
-    # Build search URL
+    # Build search URL — Wallapop redirects /app/search to /search
     params = {
         "keywords": query["keywords"],
         "latitude": config.USER_LATITUDE,
@@ -164,21 +164,21 @@ def _search_single_query(page, query: dict) -> list[dict]:
         "order_by": "newest",
         "max_sale_price": config.PRICE_NEGOCIAR_MAX,
     }
-    search_url = f"{config.WALLAPOP_BASE_URL}/app/search?{urllib.parse.urlencode(params)}"
+    search_url = f"{config.WALLAPOP_BASE_URL}/search?{urllib.parse.urlencode(params)}"
 
     try:
         # Navigate to search page
         page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
 
-        # Wait for content to load
-        # First try waiting for the API response, then for visual content
+        # Wait for listing cards to actually appear in the DOM
         try:
-            page.wait_for_load_state("networkidle", timeout=15000)
+            page.wait_for_selector('a[href^="/item/"]', timeout=15000)
+            logger.debug("  Listing cards detected in DOM.")
         except PlaywrightTimeout:
-            logger.debug("  Network didn't fully idle, continuing...")
+            logger.warning("  No listing cards appeared within timeout.")
 
-        # Extra wait for any late API calls
-        page.wait_for_timeout(3000)
+        # Extra wait for all cards to render
+        page.wait_for_timeout(2000)
 
     except PlaywrightTimeout:
         logger.warning(f"  Page load timeout for '{query['keywords']}'")
@@ -195,8 +195,8 @@ def _search_single_query(page, query: dict) -> list[dict]:
         if listings:
             return listings
 
-    # Fallback: parse from DOM
-    logger.info(f"  No API data, falling back to DOM parsing...")
+    # Fallback: parse from DOM (primary method based on live testing)
+    logger.info(f"  Parsing listings from DOM...")
     return _parse_dom(page, query["console"])
 
 
@@ -320,27 +320,21 @@ def _parse_dom(page, console_type: str) -> list[dict]:
     """
     listings = []
 
-    # Try multiple selector strategies for Wallapop's listing cards
-    card_selectors = [
-        "a[href*='/item/']",
-        "[class*='ItemCard']",
-        "[class*='item-card']",
-        "[data-testid*='item']",
-    ]
+    # Wallapop uses CSS modules with hashed class names, so we target
+    # stable attributes instead. Listing cards are <a> tags linking to /item/.
+    card_selector = 'a[href^="/item/"]'
 
-    cards = []
-    for selector in card_selectors:
-        try:
-            cards = page.query_selector_all(selector)
-            if cards:
-                logger.debug(f"  Found {len(cards)} cards with selector: {selector}")
-                break
-        except Exception:
-            continue
+    try:
+        cards = page.query_selector_all(card_selector)
+    except Exception as e:
+        logger.error(f"  Error querying cards: {e}")
+        cards = []
 
     if not cards:
         logger.warning("  No listing cards found in DOM.")
         return []
+
+    logger.info(f"  Found {len(cards)} listing cards in DOM.")
 
     for card in cards:
         try:
@@ -363,52 +357,41 @@ def _parse_dom_card(card, console_type: str) -> dict | None:
     Returns:
         Normalized listing dict, or None if parsing fails.
     """
-    # Get the link/URL
+    # The card itself is an <a> tag with href like /item/slug-12345
     href = card.get_attribute("href") or ""
-    if not href:
-        link = card.query_selector("a[href*='/item/']")
-        if link:
-            href = link.get_attribute("href") or ""
-
-    if not href:
+    if not href or not href.startswith("/item/"):
         return None
 
-    # Extract listing ID from URL
+    # Extract listing ID from URL (last segment, often contains numeric ID)
     listing_id = href.rstrip("/").split("/")[-1]
-    full_url = href if href.startswith("http") else f"{config.WALLAPOP_BASE_URL}{href}"
+    full_url = f"{config.WALLAPOP_BASE_URL}{href}"
 
-    # Title
+    # Title — from <h3> tag inside the card, or from the title/aria-label attribute
     title = ""
-    for title_sel in ["[class*='title']", "[class*='Title']", "h2", "h3", "p"]:
-        title_el = card.query_selector(title_sel)
-        if title_el:
-            title = (title_el.text_content() or "").strip()
-            if title:
-                break
+    title_el = card.query_selector("h3")
+    if title_el:
+        title = (title_el.text_content() or "").strip()
+    if not title:
+        title = card.get_attribute("title") or card.get_attribute("aria-label") or ""
+    title = title.strip()
 
-    # Price
+    # Price — from <strong> tag inside the card
     price = 0.0
-    for price_sel in ["[class*='price']", "[class*='Price']", "[class*='amount']"]:
-        price_el = card.query_selector(price_sel)
-        if price_el:
-            price_text = (price_el.text_content() or "").strip()
-            price_clean = "".join(c for c in price_text if c.isdigit() or c in ".,")
-            price_clean = price_clean.replace(",", ".")
-            try:
-                price = float(price_clean) if price_clean else 0.0
-                if price > 0:
-                    break
-            except ValueError:
-                continue
+    price_el = card.query_selector("strong")
+    if price_el:
+        price_text = (price_el.text_content() or "").strip()
+        # Remove currency symbols and whitespace, handle "120 €" or "120€" or "1.200 €"
+        price_clean = price_text.replace("€", "").replace("\u20ac", "").strip()
+        price_clean = price_clean.replace(".", "").replace(",", ".")
+        try:
+            price = float(price_clean) if price_clean else 0.0
+        except ValueError:
+            price = 0.0
 
-    # Location (may not be available in card view)
-    city = "Desconocida"
-    for loc_sel in ["[class*='location']", "[class*='Location']", "[class*='city']"]:
-        loc_el = card.query_selector(loc_sel)
-        if loc_el:
-            city = (loc_el.text_content() or "").strip() or "Desconocida"
-            if city != "Desconocida":
-                break
+    # Location — not available in search grid cards per inspection.
+    # Wallapop only shows shipping badges, not city names.
+    # Location will be inferred from the search coordinates filter.
+    city = "Zona configurada"
 
     if not title and price == 0:
         return None
