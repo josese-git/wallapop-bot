@@ -110,27 +110,57 @@ def _determine_category(listing: dict) -> str | None:
 
 
 def _is_accessory_only(listing: dict) -> bool:
-    """Check if a listing is for an accessory, not a console.
-    
-    We check if the title matches known accessory-only patterns.
-    Only excludes items that seem to be ONLY accessories.
-    
-    Args:
-        listing: A single listing dict.
+    """Check if a listing is for an accessory or game, not a console.
     
     Returns:
-        True if this is likely an accessory-only listing.
+        True if this is likely an accessory or game listing.
     """
-    title_lower = listing.get("title", "").lower().strip()
-
-    # Check if title matches any accessory-only pattern
-    for keyword in config.ACCESSORY_ONLY_KEYWORDS:
-        if keyword in title_lower:
-            # But if the price is high enough, it might be console + accessory
-            if listing["price"] >= 120:
-                return False
+    title = listing.get("title", "").strip()
+    title_lower = title.lower()
+    
+    # 1. Split title and strip starter filler words to inspect the actual first word
+    words = title_lower.split()
+    if not words:
+        return True
+        
+    while words and words[0] in config.START_FILLER_WORDS:
+        words.pop(0)
+        
+    if not words:
+        return True
+        
+    first_word = "".join(c for c in words[0] if c.isalnum())
+    
+    # Check if the title starts with a console keyword
+    starts_with_console = any(kw in first_word for kw in ["ps5", "playstation", "xbox", "series", "consola", "console"])
+    
+    # Check if title has strong console indicators anywhere
+    has_console_indicator = any(kw in title_lower for kw in ["consola", "console", "pack", "lote"]) or starts_with_console
+    
+    # 2. Check ALWAYS accessory keywords (blocked anywhere in title)
+    always_accessory = [
+        "volante", "pedales", "shifter", "g29", "g920", "g923", "thrustmaster", "t150", "t300", "t248", "logitech", "playseat", "cockpit",
+        "psvr", "psvr2", "gafas", "oculus", "meta quest",
+        "cascos", "auriculares", "headset", "headphones", "pulse 3d", "pulse elite",
+        "portal", "playstation portal", "remote play",
+        "funda", "carcasa", "skin", "vinilo", "soporte", "base de carga", "estacion de carga", "teclado", "raton", "ratón", "cable", "cargador", "adaptador", "cámara", "camara", "media remote", "placas", "chasis", "refrigeracion", "ventilador", "hdmi", "ssd", "disco duro", "tarjeta de memoria", "caja vacia", "caja vacía", "solo caja", "caja original",
+        "cuenta", "cuentas", "suscripcion", "suscripción", "plus", "psn", "game pass", "gamepass", "codigo", "código", "card", "tarjeta prepago"
+    ]
+    for kw in always_accessory:
+        if kw in title_lower:
             return True
-
+            
+    # 3. Check start words (if title starts with these, it is an accessory)
+    if first_word in config.ACCESSORY_START_WORDS:
+        return True
+        
+    # 4. Check conditional accessory keywords (blocked unless console indicator is present)
+    conditional_accessory = ["mando", "mandos", "controller", "gamepad", "joystick", "dualsense", "dual sense", "juego", "juegos", "game", "games"]
+    for kw in conditional_accessory:
+        if kw in title_lower:
+            if not has_console_indicator:
+                return True
+                
     return False
 
 

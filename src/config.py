@@ -59,14 +59,47 @@ BUNDLE_KEYWORDS = [
     "todo incluido", "set completo",
 ]
 
-# Titles containing ONLY these words (no console mention context)
-# indicate accessories, not consoles. Used for false-positive filtering.
-ACCESSORY_ONLY_KEYWORDS = [
-    "mando suelto", "solo mando", "dualsense", "controller",
-    "funda", "carcasa", "skin", "vinilo", "soporte", "base de carga",
-    "headset", "auriculares", "teclado", "ratón", "cable hdmi",
-    "adaptador", "pegatina", "protector", "cámara ps5",
-    "media remote", "mando inalámbrico",
+# Keywords that, if present ANYWHERE in the title, strongly indicate it's an accessory/game, NOT a console.
+STRICT_ACCESSORY_KEYWORDS = [
+    # Controllers / Mandos
+    "dualsense", "dual sense", "controller", "gamepad", "joystick", "mando suelto", "solo mando",
+    "mando inalámbrico", "mando inalambrico", "razer raiju", "nacon", "scuf", "aim controller",
+    "edge", "dualsense edge", "elite series", "mando elite",
+    # Steering wheels / Volantes
+    "volante", "pedales", "shifter", "g29", "g920", "g923", "thrustmaster", "t150", "t300", 
+    "t248", "logitech", "playseat", "cockpit",
+    # VR / Realidad Virtual
+    "vr", "psvr", "psvr2", "gafas", "realidad virtual", "oculus", "meta quest",
+    # Audio / Cascos
+    "cascos", "auriculares", "headset", "headphones", "pulse 3d", "pulse elite",
+    # Other accessories / Parts
+    "funda", "carcasa", "skin", "vinilo", "soporte", "base de carga", "estacion de carga",
+    "teclado", "raton", "ratón", "cable", "cargador", "adaptador", "cámara", "camara",
+    "media remote", "placas", "chasis", "refrigeracion", "ventilador", "hdmi", "ssd", 
+    "disco duro", "tarjeta de memoria", "caja vacia", "caja vacía", "solo caja", "caja original",
+    # Games & Accounts
+    "juego", "juegos", "game", "games", "cuenta", "cuentas", "suscripcion", "suscripción", 
+    "plus", "psn", "game pass", "gamepass", "codigo", "código", "card", "tarjeta prepago",
+    # PlayStation Portal
+    "portal", "playstation portal", "remote play"
+]
+
+# Words that, if they are the first word of the title (after stripping common fillers),
+# indicate the listing is about that item. E.g. "Mando PS5" -> starts with "Mando" (Accessory).
+ACCESSORY_START_WORDS = [
+    "mando", "mandos", "volante", "volantes", "cascos", "auriculares", "juego", "juegos", 
+    "funda", "fundas", "carcasa", "carcasas", "soporte", "soportes", "cable", "cables", 
+    "caja", "cajas", "cuenta", "cuentas", "gafas", "camara", "cámara", "ssd", "disco", 
+    "chasis", "placas", "base", "cargador", "cargadores"
+]
+
+# Verbs/Fillers commonly found at the start of Wallapop listings.
+# We strip these before checking the first word.
+START_FILLER_WORDS = [
+    "vendo", "se vende", "venda", "compro", "busco", "lote de", "pack de", "caja de", 
+    "exclusivo", "nuevo", "nueva", "seminuevo", "semi-nuevo", "oportunidad", "ganga", 
+    "original", "oficial", "magnifico", "magnífico", "espectacular", "increible", "increíble",
+    "se", "a", "la", "el", "un", "una"
 ]
 
 # ═══════════════════════════════════════════════════════════════
