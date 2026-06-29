@@ -56,8 +56,13 @@ def send_summary(total_found: int, new_count: int, price_drops: int, categories:
         return False
 
     if new_count == 0 and price_drops == 0:
-        # Don't spam with "nothing found" messages
-        return True
+        # Send a compact silent message so the user knows the scan executed
+        text = f"🔍 <b>Scan finalizado:</b> Sin novedades (analizados {total_found} anuncios)."
+        return _send_message(
+            text=text,
+            parse_mode="HTML",
+            disable_notification=True,
+        )
 
     lines = ["━━━━━━━━━━━━━━━━━━━━━"]
     lines.append(f"📊 <b>Resumen del scan</b>")

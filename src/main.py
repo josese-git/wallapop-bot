@@ -77,78 +77,76 @@ def _run_scan() -> None:
     seen = load_seen_listings()
     logger.info(f"   {len(seen)} listings in history")
 
+    raw_listings = []
+    classified = []
+    to_notify = []
+
     # Step 2: Scrape Wallapop
     logger.info("🔍 Scraping Wallapop...")
     raw_listings = scrape_all_queries()
     logger.info(f"   Found {len(raw_listings)} raw listings")
 
-    if not raw_listings:
-        logger.info("   No listings found. Nothing to do.")
-        save_seen_listings(seen)  # Save to trigger cleanup
-        return
+    if raw_listings:
+        # Step 3: Classify listings
+        logger.info("🧠 Classifying listings...")
+        classified = classify_listings(raw_listings, seen)
+        logger.info(f"   {len(classified)} listings matched our criteria")
 
-    # Step 3: Classify listings
-    logger.info("🧠 Classifying listings...")
-    classified = classify_listings(raw_listings, seen)
-    logger.info(f"   {len(classified)} listings matched our criteria")
+        if classified:
+            # Step 4: Filter new + price drops
+            logger.info("🔎 Filtering new and price-dropped listings...")
+            for listing in classified:
+                lid = listing["id"]
 
-    if not classified:
-        logger.info("   No listings match our filters. Better luck next scan!")
-        save_seen_listings(seen)
-        return
+                if is_new_listing(lid, seen):
+                    listing["is_new"] = True
+                    to_notify.append(listing)
+                elif listing.get("price_drop"):
+                    listing["is_new"] = False
+                    to_notify.append(listing)
 
-    # Step 4: Filter new + price drops
-    logger.info("🔎 Filtering new and price-dropped listings...")
-    to_notify = []
+            logger.info(
+                f"   {len(to_notify)} new notifications "
+                f"({sum(1 for l in to_notify if l.get('is_new'))} new, "
+                f"{sum(1 for l in to_notify if l.get('price_drop'))} price drops)"
+            )
 
-    for listing in classified:
-        lid = listing["id"]
+            # Step 5: Send notifications
+            if to_notify:
+                logger.info("📱 Sending Telegram notifications...")
+                sent_count = 0
+                for listing in to_notify:
+                    success = send_listing_notification(listing)
+                    if success:
+                        sent_count += 1
+                    # Small delay between messages to avoid Telegram rate limits
+                    time.sleep(0.5)
 
-        if is_new_listing(lid, seen):
-            listing["is_new"] = True
-            to_notify.append(listing)
-        elif listing.get("price_drop"):
-            listing["is_new"] = False
-            to_notify.append(listing)
+                logger.info(f"   Sent {sent_count}/{len(to_notify)} notifications")
+            else:
+                logger.info("   No new notifications to send.")
 
-    logger.info(
-        f"   {len(to_notify)} new notifications "
-        f"({sum(1 for l in to_notify if l.get('is_new'))} new, "
-        f"{sum(1 for l in to_notify if l.get('price_drop'))} price drops)"
+            # Step 6: Mark all classified listings as seen
+            for listing in classified:
+                mark_as_seen(listing, seen)
+        else:
+            logger.info("   No listings match our filters.")
+    else:
+        logger.info("   No listings found.")
+
+    # Step 7: Always send scan summary
+    category_counts = Counter(l["category"] for l in to_notify)
+    new_count = sum(1 for l in to_notify if l.get("is_new"))
+    price_drop_count = sum(1 for l in to_notify if l.get("price_drop"))
+    
+    send_summary(
+        total_found=len(raw_listings),
+        new_count=new_count,
+        price_drops=price_drop_count,
+        categories=dict(category_counts),
     )
 
-    # Step 5: Send notifications
-    if to_notify:
-        logger.info("📱 Sending Telegram notifications...")
-        sent_count = 0
-        for listing in to_notify:
-            success = send_listing_notification(listing)
-            if success:
-                sent_count += 1
-            # Small delay between messages to avoid Telegram rate limits
-            time.sleep(0.5)
-
-        logger.info(f"   Sent {sent_count}/{len(to_notify)} notifications")
-
-        # Send summary
-        category_counts = Counter(l["category"] for l in to_notify)
-        new_count = sum(1 for l in to_notify if l.get("is_new"))
-        price_drop_count = sum(1 for l in to_notify if l.get("price_drop"))
-        send_summary(
-            total_found=len(raw_listings),
-            new_count=new_count,
-            price_drops=price_drop_count,
-            categories=dict(category_counts),
-        )
-    else:
-        logger.info("   No new notifications to send.")
-
-    # Step 6: Mark all classified listings as seen
-    # (even ones we didn't notify about, to prevent re-checking)
-    for listing in classified:
-        mark_as_seen(listing, seen)
-
-    # Step 7: Save
+    # Step 8: Save seen listings (triggers cleanup of old entries)
     logger.info("💾 Saving seen listings...")
     save_seen_listings(seen)
     logger.info("   Done!")
