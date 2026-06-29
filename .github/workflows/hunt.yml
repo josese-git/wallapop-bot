@@ -1,0 +1,51 @@
+name: 🎮 WallaHunter
+
+on:
+  schedule:
+    # Every 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    # Manual trigger for testing
+
+# Only one hunt at a time — cancel previous if still running
+concurrency:
+  group: wallapop-hunter
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4  # Should finish in ~2 min, hard kill at 4
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 🎭 Install Playwright browser
+        run: playwright install chromium --with-deps
+
+      - name: 🔍 Hunt for deals
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m src.main
+
+      - name: 💾 Save seen listings
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "WallaHunter Bot"
+          git add data/
+          git diff --staged --quiet || git commit -m "🔄 Update seen listings [skip ci]"
+          git push
