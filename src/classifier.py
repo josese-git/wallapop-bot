@@ -29,9 +29,14 @@ def classify_listings(listings: list[dict], seen: dict) -> list[dict]:
     classified = []
 
     for listing in listings:
-        # Skip probable scams
+        # Skip probable scams / games / accessories by price
         if listing["price"] < config.PRICE_MIN_FILTER:
-            logger.debug(f"Skipping scam-priced listing: {listing['title']} ({listing['price']}€)")
+            logger.debug(f"Skipping cheap listing (likely games/accessories): {listing['title']} ({listing['price']}€)")
+            continue
+
+        # Ensure the title actually refers to the target console
+        if not _contains_console_keywords(listing):
+            logger.debug(f"Skipping unrelated listing (title lacks console keywords): {listing['title']}")
             continue
 
         # Skip accessories that aren't actual consoles
@@ -216,3 +221,22 @@ def _calculate_distance(listing: dict) -> float | None:
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
     return R * c
+
+
+def _contains_console_keywords(listing: dict) -> bool:
+    """Verify that the listing title contains console keywords.
+    
+    Prevents unrelated search results from being classified.
+    """
+    title_lower = listing.get("title", "").lower()
+    console_type = listing.get("console_type", "")
+    
+    if console_type == "PS5":
+        return any(kw in title_lower for kw in ["ps5", "playstation 5", "play station 5", "play 5"])
+    elif console_type == "Xbox Series X":
+        # Must contain "xbox" AND some variation of "series x" or "sx"
+        has_xbox = "xbox" in title_lower
+        has_series_x = any(kw in title_lower for kw in ["series x", "seriesx", "sx"])
+        return has_xbox and has_series_x
+        
+    return False

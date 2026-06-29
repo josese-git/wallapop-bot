@@ -35,7 +35,7 @@ PRICE_REPARAR_MAX = 200      # 🔧 REPARAR — cheap enough to fix
 PRICE_BARATITO_MAX = 300     # 💰 BARATITO — good deal
 PRICE_NEGOCIAR_MAX = 350     # 🤝 PARA NEGOCIAR — nearby, worth haggling
 PRICE_LOTE_MAX = 350         # 📦 LOTE/PACK — bundle deal
-PRICE_MIN_FILTER = 30        # Below this = probable scam, ignore
+PRICE_MIN_FILTER = 100       # Below this = games/accessories/scams, ignore
 
 # ═══════════════════════════════════════════════════════════════
 # KEYWORD DETECTION
