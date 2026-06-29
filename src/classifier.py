@@ -26,29 +26,72 @@ def classify_listings(listings: list[dict], seen: dict) -> list[dict]:
     Returns:
         List of classified listings, sorted by priority.
     """
+    from .ai_classifier import analyze_with_ai
     classified = []
 
     for listing in listings:
-        # Skip probable scams / games / accessories by price
-        if listing["price"] < config.PRICE_MIN_FILTER:
-            logger.debug(f"Skipping cheap listing (likely games/accessories): {listing['title']} ({listing['price']}€)")
-            continue
+        price = listing["price"]
+        title = listing.get("title", "")
+        description = listing.get("description", "")
 
-        # Ensure the title actually refers to the target console
-        if not _contains_console_keywords(listing):
-            logger.debug(f"Skipping unrelated listing (title lacks console keywords): {listing['title']}")
-            continue
+        # 1. Try AI classification first
+        ai_analysis = analyze_with_ai(title, description, price)
 
-        # Skip accessories that aren't actual consoles
-        if _is_accessory_only(listing):
-            logger.debug(f"Skipping accessory: {listing['title']}")
-            continue
+        if ai_analysis is not None:
+            # AI classified the listing
+            if not ai_analysis.is_console:
+                logger.debug(f"AI skipped listing (not a console): {title} ({ai_analysis.explanation})")
+                continue
 
-        # Classify
-        category = _determine_category(listing)
-        if category is None:
-            continue
+            # It IS a console according to AI!
+            category = None
 
+            # ⚡ CHOLLO EXTREMO — absurdly cheap
+            if price <= config.PRICE_CHOLLO_MAX:
+                category = config.CATEGORY_CHOLLO
+            # 🔧 REPARAR — AI says it's broken, or price fits
+            elif ai_analysis.is_broken_or_for_parts or price <= config.PRICE_REPARAR_MAX:
+                category = config.CATEGORY_REPARAR
+            # 📦 LOTE/PACK — AI says it's a bundle, or title mentions bundle keywords
+            elif ai_analysis.is_bundle or _has_keywords(title.lower(), config.BUNDLE_KEYWORDS):
+                category = config.CATEGORY_LOTE
+            # 💰 BARATITO — just a good price
+            elif price <= config.PRICE_BARATITO_MAX:
+                category = config.CATEGORY_BARATITO
+            # 🤝 PARA NEGOCIAR — nearby and worth haggling
+            elif price <= config.PRICE_NEGOCIAR_MAX:
+                distance = _calculate_distance(listing)
+                if distance is not None and distance <= config.NEARBY_RADIUS_KM:
+                    category = config.CATEGORY_NEGOCIAR
+
+            if category is None:
+                continue
+
+            logger.info(f"AI matched console: {title} ({price}€) -> Category: {category} ({ai_analysis.explanation})")
+
+        else:
+            # 2. Fallback to deterministic rules if AI key is missing or failed
+            # Skip probable scams / games / accessories by price
+            if price < config.PRICE_MIN_FILTER:
+                logger.debug(f"Skipping cheap listing (likely games/accessories): {title} ({price}€)")
+                continue
+
+            # Ensure the title actually refers to the target console
+            if not _contains_console_keywords(listing):
+                logger.debug(f"Skipping unrelated listing (title lacks console keywords): {title}")
+                continue
+
+            # Skip accessories that aren't actual consoles
+            if _is_accessory_only(listing):
+                logger.debug(f"Skipping accessory: {title}")
+                continue
+
+            # Classify using deterministic rules
+            category = _determine_category(listing)
+            if category is None:
+                continue
+
+        # Set listing classification fields
         listing["category"] = category
         listing["priority"] = config.CATEGORY_DISPLAY[category]["priority"]
         listing["category_emoji"] = config.CATEGORY_DISPLAY[category]["emoji"]
