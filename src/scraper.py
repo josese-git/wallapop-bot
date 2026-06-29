@@ -180,6 +180,32 @@ def _search_single_query(page, query: dict) -> list[dict]:
         # Extra wait for all cards to render
         page.wait_for_timeout(2000)
 
+        # === DIAGNOSTIC: Capture what Playwright actually sees ===
+        import os
+        debug_dir = "debug"
+        os.makedirs(debug_dir, exist_ok=True)
+        safe_kw = query["keywords"].replace(" ", "_")
+
+        # Screenshot
+        screenshot_path = f"{debug_dir}/search_{safe_kw}.png"
+        page.screenshot(path=screenshot_path, full_page=True)
+        logger.info(f"  📸 Screenshot saved: {screenshot_path}")
+
+        # Page URL (check for redirects)
+        logger.info(f"  📍 Current URL: {page.url}")
+
+        # HTML snippet (first 2000 chars of body)
+        body_html = page.inner_html("body")[:3000]
+        html_path = f"{debug_dir}/html_{safe_kw}.txt"
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(body_html)
+        logger.info(f"  📄 HTML dump saved: {html_path}")
+
+        # Count all <a> tags to understand the DOM
+        all_links = page.query_selector_all("a")
+        item_links = page.query_selector_all('a[href*="/item/"]')
+        logger.info(f"  🔗 Total <a> tags: {len(all_links)}, <a> with /item/: {len(item_links)}")
+
     except PlaywrightTimeout:
         logger.warning(f"  Page load timeout for '{query['keywords']}'")
     except Exception as e:
