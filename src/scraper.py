@@ -63,6 +63,14 @@ def scrape_all_queries() -> list[dict]:
 
         page = context.new_page()
 
+        # Apply stealth mode to bypass CloudFront WAF
+        try:
+            from playwright_stealth import stealth_sync
+            stealth_sync(page)
+            logger.debug("  Playwright stealth applied successfully.")
+        except Exception as e:
+            logger.warning(f"  Could not apply playwright-stealth: {e}")
+
         # Handle cookie consent on first visit
         _handle_cookie_consent(page)
 
