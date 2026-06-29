@@ -34,7 +34,23 @@ def classify_listings(listings: list[dict], seen: dict) -> list[dict]:
         title = listing.get("title", "")
         description = listing.get("description", "")
 
-        # 1. Try AI classification first
+        # 1. PRE-FILTERING (Deterministic)
+        # Skip obvious non-consoles to save Gemini API quota and avoid 429 errors
+        if price < config.PRICE_MIN_FILTER:
+            logger.debug(f"Skipping cheap listing (pre-filter): {title} ({price}€)")
+            continue
+
+        # Ensure the title actually refers to the target console
+        if not _contains_console_keywords(listing):
+            logger.debug(f"Skipping unrelated listing (pre-filter): {title}")
+            continue
+
+        # Skip accessories that aren't actual consoles
+        if _is_accessory_only(listing):
+            logger.debug(f"Skipping accessory (pre-filter): {title}")
+            continue
+
+        # 2. AI CLASSIFICATION (On filtered candidates only)
         ai_analysis = analyze_with_ai(title, description, price)
 
         if ai_analysis is not None:
@@ -69,24 +85,12 @@ def classify_listings(listings: list[dict], seen: dict) -> list[dict]:
 
             logger.info(f"AI matched console: {title} ({price}€) -> Category: {category} ({ai_analysis.explanation})")
 
+            # Small delay to respect Gemini API free-tier rate limits (15 RPM)
+            import time
+            time.sleep(4)
+
         else:
-            # 2. Fallback to deterministic rules if AI key is missing or failed
-            # Skip probable scams / games / accessories by price
-            if price < config.PRICE_MIN_FILTER:
-                logger.debug(f"Skipping cheap listing (likely games/accessories): {title} ({price}€)")
-                continue
-
-            # Ensure the title actually refers to the target console
-            if not _contains_console_keywords(listing):
-                logger.debug(f"Skipping unrelated listing (title lacks console keywords): {title}")
-                continue
-
-            # Skip accessories that aren't actual consoles
-            if _is_accessory_only(listing):
-                logger.debug(f"Skipping accessory: {title}")
-                continue
-
-            # Classify using deterministic rules
+            # Fallback to deterministic classification if AI key is missing or failed
             category = _determine_category(listing)
             if category is None:
                 continue
