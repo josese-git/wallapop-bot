@@ -461,7 +461,7 @@
     "title": "Xbox Series X Consola Negra",
     "console": "Xbox Series X",
     "first_seen": "2026-06-30T05:52:52.886633+00:00",
-    "last_seen": "2026-06-30T05:52:52.886633+00:00"
+    "last_seen": "2026-06-30T13:33:10.645078+00:00"
   },
   "xbox-series-s-cambio-a-ps5-xbox-series-x-encimo-1277049319": {
     "price": 250.0,
@@ -486,5 +486,29 @@
     "console": "PS5",
     "first_seen": "2026-06-30T05:52:52.886641+00:00",
     "last_seen": "2026-06-30T05:52:52.886641+00:00"
+  },
+  "ps5-sony-rota-1277228195": {
+    "price": 210.0,
+    "last_notified_price": 210.0,
+    "title": "Ps5 Sony Rota",
+    "console": "PS5",
+    "first_seen": "2026-06-30T13:33:10.645052+00:00",
+    "last_seen": "2026-06-30T13:33:10.645052+00:00"
+  },
+  "consola-playstation-5-slim-digital-edition-blanca-1277228173": {
+    "price": 281.0,
+    "last_notified_price": 281.0,
+    "title": "Consola PlayStation 5 Slim Digital Edition Blanca",
+    "console": "PS5",
+    "first_seen": "2026-06-30T13:33:10.645073+00:00",
+    "last_seen": "2026-06-30T13:33:10.645073+00:00"
+  },
+  "ps5-sony-blanca-con-juegos-1277234138": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "Ps5 Sony Blanca con Juegos",
+    "console": "PS5",
+    "first_seen": "2026-06-30T13:33:10.645083+00:00",
+    "last_seen": "2026-06-30T13:33:10.645083+00:00"
   }
 }
