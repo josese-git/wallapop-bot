@@ -518,5 +518,29 @@
     "console": "PS5",
     "first_seen": "2026-06-30T20:25:33.667508+00:00",
     "last_seen": "2026-06-30T20:25:33.667508+00:00"
+  },
+  "a-plague-tale-collection-xbox-series-x-1277324835": {
+    "price": 70.0,
+    "last_notified_price": 70.0,
+    "title": "A Plague Tale Collection Xbox Series X",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-01T06:11:45.158947+00:00",
+    "last_seen": "2026-07-01T06:11:45.158947+00:00"
+  },
+  "libro-infantil-el-baile-de-las-momias-1277424655": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "PlayStation 5 Slim de disco",
+    "console": "PS5",
+    "first_seen": "2026-07-01T06:11:45.158973+00:00",
+    "last_seen": "2026-07-01T06:11:45.158973+00:00"
+  },
+  "playstation-5-slim-con-mando-1277427027": {
+    "price": 265.0,
+    "last_notified_price": 265.0,
+    "title": "Playstation 5 slim con mando",
+    "console": "PS5",
+    "first_seen": "2026-07-01T06:11:45.158979+00:00",
+    "last_seen": "2026-07-01T06:11:45.158979+00:00"
   }
 }
