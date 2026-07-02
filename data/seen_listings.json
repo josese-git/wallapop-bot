@@ -542,5 +542,29 @@
     "console": "PS5",
     "first_seen": "2026-07-01T06:11:45.158979+00:00",
     "last_seen": "2026-07-01T06:11:45.158979+00:00"
+  },
+  "playstation-5-digital-edition-sony-blanca-1277785963": {
+    "price": 250.0,
+    "last_notified_price": 250.0,
+    "title": "PlayStation 5 Digital Edition Sony Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-02T07:56:47.393448+00:00",
+    "last_seen": "2026-07-02T07:56:47.393448+00:00"
+  },
+  "consola-playstation-5-blanca-1277779855": {
+    "price": 290.0,
+    "last_notified_price": 290.0,
+    "title": "Consola PlayStation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-02T07:56:47.393472+00:00",
+    "last_seen": "2026-07-02T07:56:47.393472+00:00"
+  },
+  "xbox-series-x-negra-1277726784": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Xbox Series X Negra",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-02T07:56:47.393477+00:00",
+    "last_seen": "2026-07-02T07:56:47.393477+00:00"
   }
 }
