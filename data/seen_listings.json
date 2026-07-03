@@ -606,5 +606,21 @@
     "console": "PS5",
     "first_seen": "2026-07-03T08:30:33.667341+00:00",
     "last_seen": "2026-07-03T08:30:33.667341+00:00"
+  },
+  "ps5-slim-disco---6-juegos---2-mandos-1278449573": {
+    "price": 340.0,
+    "last_notified_price": 340.0,
+    "title": "PS5 Slim Disco + 6 Juegos + 2 Mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-03T19:57:09.579397+00:00",
+    "last_seen": "2026-07-03T19:57:09.579397+00:00"
+  },
+  "ps5-edicion-estandar---mando-1278457537": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "PS5 Edición Estándar + Mando",
+    "console": "PS5",
+    "first_seen": "2026-07-03T19:57:09.579416+00:00",
+    "last_seen": "2026-07-03T19:57:09.579416+00:00"
   }
 }
