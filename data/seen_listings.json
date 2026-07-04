@@ -654,5 +654,29 @@
     "console": "PS5",
     "first_seen": "2026-07-04T11:30:31.382759+00:00",
     "last_seen": "2026-07-04T11:30:31.382759+00:00"
+  },
+  "hi-fi-rush-ps5-deluxe-edition-1278632110": {
+    "price": 75.0,
+    "last_notified_price": 75.0,
+    "title": "Hi-Fi Rush PS5 Deluxe Edition",
+    "console": "PS5",
+    "first_seen": "2026-07-04T12:48:35.847245+00:00",
+    "last_seen": "2026-07-04T12:48:35.847245+00:00"
+  },
+  "james-bond-first-light-xbox-series-x-specialist-ed-1278612187": {
+    "price": 70.0,
+    "last_notified_price": 70.0,
+    "title": "James Bond First Light Xbox Series X Specialist Ed",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-04T12:48:35.847274+00:00",
+    "last_seen": "2026-07-04T12:48:35.847274+00:00"
+  },
+  "ps5-edicion-digital---2-mandos-1278636867": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "PS5 Edición Digital + 2 Mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-04T12:48:35.847284+00:00",
+    "last_seen": "2026-07-04T12:48:35.847284+00:00"
   }
 }
