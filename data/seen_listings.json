@@ -709,6 +709,30 @@
     "title": "Xbox Series X Consola Negra",
     "console": "Xbox Series X",
     "first_seen": "2026-07-05T17:22:57.945103+00:00",
-    "last_seen": "2026-07-05T18:36:12.941462+00:00"
+    "last_seen": "2026-07-05T22:13:16.381099+00:00"
+  },
+  "lote-juegos-xbox-series-x-1279051965": {
+    "price": 180.0,
+    "last_notified_price": 180.0,
+    "title": "Lote Juegos Xbox Series X",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-05T22:13:16.381068+00:00",
+    "last_seen": "2026-07-05T22:13:16.381068+00:00"
+  },
+  "playstation-5-ps5-sony-1tb-1279072979": {
+    "price": 275.0,
+    "last_notified_price": 275.0,
+    "title": "PlayStation 5 (PS5) Sony 1TB",
+    "console": "PS5",
+    "first_seen": "2026-07-05T22:13:16.381092+00:00",
+    "last_seen": "2026-07-05T22:13:16.381092+00:00"
+  },
+  "ps5-digital---2-mandos-1279077695": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "PS5 digital + 2 mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-05T22:13:16.381104+00:00",
+    "last_seen": "2026-07-05T22:13:16.381104+00:00"
   }
 }
