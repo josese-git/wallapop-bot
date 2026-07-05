@@ -702,5 +702,13 @@
     "console": "PS5",
     "first_seen": "2026-07-05T04:38:13.175104+00:00",
     "last_seen": "2026-07-05T04:38:13.175104+00:00"
+  },
+  "xbox-series-x-consola-negra-1278965941": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Xbox Series X Consola Negra",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-05T17:22:57.945103+00:00",
+    "last_seen": "2026-07-05T17:22:57.945103+00:00"
   }
 }
