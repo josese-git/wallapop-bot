@@ -678,5 +678,29 @@
     "console": "PS5",
     "first_seen": "2026-07-04T12:48:35.847284+00:00",
     "last_seen": "2026-07-04T12:48:35.847284+00:00"
+  },
+  "consola-playstation-5-blanca-1278783565": {
+    "price": 150.0,
+    "last_notified_price": 150.0,
+    "title": "Consola PlayStation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-05T04:38:13.175030+00:00",
+    "last_seen": "2026-07-05T04:38:13.175030+00:00"
+  },
+  "ps5-para-piezas-1278781530": {
+    "price": 150.0,
+    "last_notified_price": 150.0,
+    "title": "Ps5 para piezas",
+    "console": "PS5",
+    "first_seen": "2026-07-05T04:38:13.175096+00:00",
+    "last_seen": "2026-07-05T04:38:13.175096+00:00"
+  },
+  "consola-playstation-5-slim---accesorios-1278788181": {
+    "price": 280.0,
+    "last_notified_price": 280.0,
+    "title": "Consola PlayStation 5 Slim + Accesorios",
+    "console": "PS5",
+    "first_seen": "2026-07-05T04:38:13.175104+00:00",
+    "last_seen": "2026-07-05T04:38:13.175104+00:00"
   }
 }
