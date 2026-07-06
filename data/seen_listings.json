@@ -742,5 +742,13 @@
     "console": "PS5",
     "first_seen": "2026-07-06T09:44:53.254503+00:00",
     "last_seen": "2026-07-06T09:44:53.254503+00:00"
+  },
+  "xbox-series-x-1tb-1279302069": {
+    "price": 249.99,
+    "last_notified_price": 249.99,
+    "title": "Xbox Series X 1TB",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-06T23:21:18.297503+00:00",
+    "last_seen": "2026-07-06T23:21:18.297503+00:00"
   }
 }
