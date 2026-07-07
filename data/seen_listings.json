@@ -830,5 +830,21 @@
     "console": "Xbox Series X",
     "first_seen": "2026-07-07T11:34:50.811625+00:00",
     "last_seen": "2026-07-07T11:34:50.811625+00:00"
+  },
+  "ps5-con-lector-blanca-1279605534": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "PS5 con lector - Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-07T16:19:51.565457+00:00",
+    "last_seen": "2026-07-07T16:19:51.565457+00:00"
+  },
+  "consola-ps5-slim-blanca---mando-1279602278": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "Consola PS5 digital Blanca + Mando",
+    "console": "PS5",
+    "first_seen": "2026-07-07T16:19:51.565481+00:00",
+    "last_seen": "2026-07-07T16:19:51.565481+00:00"
   }
 }
