@@ -750,5 +750,69 @@
     "console": "Xbox Series X",
     "first_seen": "2026-07-06T23:21:18.297503+00:00",
     "last_seen": "2026-07-06T23:21:18.297503+00:00"
+  },
+  "playstation-5-ps5-rotta-disco-1279415162": {
+    "price": 160.0,
+    "last_notified_price": 160.0,
+    "title": "PlayStation 5 PS5 Disco en Ruta",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947694+00:00",
+    "last_seen": "2026-07-07T05:12:02.947694+00:00"
+  },
+  "xbox-series-x-1tb-como-nueva-1279348090": {
+    "price": 200.0,
+    "last_notified_price": 200.0,
+    "title": "Xbox Series X 1TB - Como nueva",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-07T05:12:02.947717+00:00",
+    "last_seen": "2026-07-07T05:12:02.947717+00:00"
+  },
+  "consola-playstation-5-edicion-digital-1279413384": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Consola PlayStation 5 Edición Digital",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947723+00:00",
+    "last_seen": "2026-07-07T05:12:02.947723+00:00"
+  },
+  "consola-sony-ps5-slim-negra-blanca-1279411848": {
+    "price": 279.0,
+    "last_notified_price": 279.0,
+    "title": "Consola Sony PS5 Slim Negra/Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947726+00:00",
+    "last_seen": "2026-07-07T05:12:02.947726+00:00"
+  },
+  "consola-ps5-slim-blanca-1279409273": {
+    "price": 289.0,
+    "last_notified_price": 289.0,
+    "title": "Consola PS5 Slim Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947730+00:00",
+    "last_seen": "2026-07-07T05:12:02.947730+00:00"
+  },
+  "consola-ps5-digital-edition-blanca-1279406347": {
+    "price": 220.0,
+    "last_notified_price": 220.0,
+    "title": "Consola PS5 Digital Edition Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947733+00:00",
+    "last_seen": "2026-07-07T05:12:02.947733+00:00"
+  },
+  "xbox-series-x-negra-1279409859": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Xbox Series X Negra",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-07T05:12:02.947737+00:00",
+    "last_seen": "2026-07-07T05:12:02.947737+00:00"
+  },
+  "playstation-5-blanca---accesorios-1279415905": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "PlayStation 5 Blanca + Accesorios",
+    "console": "PS5",
+    "first_seen": "2026-07-07T05:12:02.947740+00:00",
+    "last_seen": "2026-07-07T05:12:02.947740+00:00"
   }
 }
