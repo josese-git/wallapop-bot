@@ -862,5 +862,77 @@
     "console": "PS5",
     "first_seen": "2026-07-08T09:04:52.924763+00:00",
     "last_seen": "2026-07-08T09:04:52.924763+00:00"
+  },
+  "mini-nevera-xbox-series-x-replica-1279992251": {
+    "price": 80.0,
+    "last_notified_price": 80.0,
+    "title": "Mini Nevera Xbox Series X Réplica",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-08T22:31:37.736786+00:00",
+    "last_seen": "2026-07-08T22:31:37.736786+00:00"
+  },
+  "xbox-series-x-blanca-1280014880": {
+    "price": 175.0,
+    "last_notified_price": 175.0,
+    "title": "Xbox Series X Blanca",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-08T22:31:37.736808+00:00",
+    "last_seen": "2026-07-08T22:31:37.736808+00:00"
+  },
+  "ps5-slim-version-disco-blanca-1280026505": {
+    "price": 285.0,
+    "last_notified_price": 285.0,
+    "title": "PS5 Slim Versión Disco Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736814+00:00",
+    "last_seen": "2026-07-08T22:31:37.736814+00:00"
+  },
+  "ps5-slim-con-lector-1280026324": {
+    "price": 265.0,
+    "last_notified_price": 265.0,
+    "title": "PS5 Slim con Lector",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736818+00:00",
+    "last_seen": "2026-07-08T22:31:37.736818+00:00"
+  },
+  "sony-ps5-disco-slim-1280025917": {
+    "price": 260.0,
+    "last_notified_price": 260.0,
+    "title": "Sony PS5 Disco Slim",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736822+00:00",
+    "last_seen": "2026-07-08T22:31:37.736822+00:00"
+  },
+  "playstation-5-slim-1280024824": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "PlayStation 5 Slim",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736827+00:00",
+    "last_seen": "2026-07-08T22:31:37.736827+00:00"
+  },
+  "consola-playstation-5---6-juegos-y-mandos-1280023666": {
+    "price": 275.0,
+    "last_notified_price": 275.0,
+    "title": "Consola PlayStation 5 + 6 Juegos y Mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736830+00:00",
+    "last_seen": "2026-07-08T22:31:37.736830+00:00"
+  },
+  "assassin-s-creed-iv-resynced-coleccionista-ps5-1280022132": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Assassin's Creed IV Resynced Coleccionista PS5",
+    "console": "PS5",
+    "first_seen": "2026-07-08T22:31:37.736834+00:00",
+    "last_seen": "2026-07-08T22:31:37.736834+00:00"
+  },
+  "xbox-series-x-negra-1280018117": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Xbox Series X Negra",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-08T22:31:37.736837+00:00",
+    "last_seen": "2026-07-08T22:31:37.736837+00:00"
   }
 }
