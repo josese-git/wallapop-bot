@@ -869,7 +869,7 @@
     "title": "Mini Nevera Xbox Series X Réplica",
     "console": "Xbox Series X",
     "first_seen": "2026-07-08T22:31:37.736786+00:00",
-    "last_seen": "2026-07-09T01:19:07.267689+00:00"
+    "last_seen": "2026-07-09T08:50:21.202332+00:00"
   },
   "xbox-series-x-blanca-1280014880": {
     "price": 175.0,
@@ -877,7 +877,7 @@
     "title": "Xbox Series X Blanca",
     "console": "Xbox Series X",
     "first_seen": "2026-07-08T22:31:37.736808+00:00",
-    "last_seen": "2026-07-09T01:19:07.267695+00:00"
+    "last_seen": "2026-07-09T08:50:21.202361+00:00"
   },
   "ps5-slim-version-disco-blanca-1280026505": {
     "price": 285.0,
@@ -933,7 +933,7 @@
     "title": "Xbox Series X Negra",
     "console": "Xbox Series X",
     "first_seen": "2026-07-08T22:31:37.736837+00:00",
-    "last_seen": "2026-07-09T01:19:07.267703+00:00"
+    "last_seen": "2026-07-09T08:50:21.202387+00:00"
   },
   "auricular-ps5-sony-inzone-h9-1280038076": {
     "price": 145.0,
@@ -950,5 +950,29 @@
     "console": "PS5",
     "first_seen": "2026-07-09T01:19:07.267698+00:00",
     "last_seen": "2026-07-09T01:19:07.267698+00:00"
+  },
+  "consola-sony-playstation-5-blanca-1280098393": {
+    "price": 275.0,
+    "last_notified_price": 275.0,
+    "title": "Consola Sony PlayStation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-09T08:50:21.202370+00:00",
+    "last_seen": "2026-07-09T08:50:21.202370+00:00"
+  },
+  "assassin-s-creed-black-flag-ed-coleccionista-ps5-1280093870": {
+    "price": 239.99,
+    "last_notified_price": 239.99,
+    "title": "Assassin's Creed Black Flag Ed. Coleccionista PS5",
+    "console": "PS5",
+    "first_seen": "2026-07-09T08:50:21.202379+00:00",
+    "last_seen": "2026-07-09T08:50:21.202379+00:00"
+  },
+  "consola-ps5-1tb-con-2-mandos-1280097724": {
+    "price": 330.0,
+    "last_notified_price": 330.0,
+    "title": "Consola PS5 1TB con 2 mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-09T08:50:21.202393+00:00",
+    "last_seen": "2026-07-09T08:50:21.202393+00:00"
   }
 }
