@@ -982,5 +982,21 @@
     "console": "PS5",
     "first_seen": "2026-07-09T22:06:26.886495+00:00",
     "last_seen": "2026-07-09T22:06:26.886495+00:00"
+  },
+  "blasphemous-deluxe-edition-xbox-one-series-x-1280335899": {
+    "price": 79.99,
+    "last_notified_price": 79.99,
+    "title": "Blasphemous Deluxe Edition Xbox One/Series X",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-09T23:36:14.247258+00:00",
+    "last_seen": "2026-07-09T23:36:14.247258+00:00"
+  },
+  "consola-playstation-5-blanca-1280380478": {
+    "price": 210.0,
+    "last_notified_price": 210.0,
+    "title": "Consola PlayStation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-09T23:36:14.247282+00:00",
+    "last_seen": "2026-07-09T23:36:14.247282+00:00"
   }
 }
