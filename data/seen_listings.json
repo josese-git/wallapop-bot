@@ -1038,5 +1038,29 @@
     "console": "PS5",
     "first_seen": "2026-07-10T11:37:37.367916+00:00",
     "last_seen": "2026-07-10T11:37:37.367916+00:00"
+  },
+  "gta-vi-ps5-1280612107": {
+    "price": 78.79,
+    "last_notified_price": 78.79,
+    "title": "GTA VI PS5",
+    "console": "PS5",
+    "first_seen": "2026-07-10T17:58:58.154315+00:00",
+    "last_seen": "2026-07-10T17:58:58.154315+00:00"
+  },
+  "sony-playstation-5-blanca-con-lector-1tb-1280613549": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Sony PlayStation 5 Blanca con lector 1TB",
+    "console": "PS5",
+    "first_seen": "2026-07-10T17:58:58.154341+00:00",
+    "last_seen": "2026-07-10T17:58:58.154341+00:00"
+  },
+  "consola-playstation-5-sony-precio-negociable-1280612912": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Consola PlayStation 5 Sony precio negociable.",
+    "console": "PS5",
+    "first_seen": "2026-07-10T17:58:58.154347+00:00",
+    "last_seen": "2026-07-10T17:58:58.154347+00:00"
   }
 }
