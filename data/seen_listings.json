@@ -1014,5 +1014,29 @@
     "console": "PS5",
     "first_seen": "2026-07-10T01:15:26.405604+00:00",
     "last_seen": "2026-07-10T01:15:26.405604+00:00"
+  },
+  "lote-juegos-xbox-one-series-x-1280376399": {
+    "price": 90.0,
+    "last_notified_price": 90.0,
+    "title": "Lote Juegos Xbox One/Series X",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-10T11:37:37.367893+00:00",
+    "last_seen": "2026-07-10T11:37:37.367893+00:00"
+  },
+  "consola-playstation-5-blanca-1280495202": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Consola PlayStation 5 Blanca Edicion Digital",
+    "console": "PS5",
+    "first_seen": "2026-07-10T11:37:37.367911+00:00",
+    "last_seen": "2026-07-10T11:37:37.367911+00:00"
+  },
+  "consola-playstation-5-modelo-fat---mando-dualsense-1280493567": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "Consola Playstation 5 Modelo FAT + Mando DualSense",
+    "console": "PS5",
+    "first_seen": "2026-07-10T11:37:37.367916+00:00",
+    "last_seen": "2026-07-10T11:37:37.367916+00:00"
   }
 }
