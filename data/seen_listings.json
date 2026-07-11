@@ -1070,5 +1070,29 @@
     "console": "PS5",
     "first_seen": "2026-07-11T00:13:51.922588+00:00",
     "last_seen": "2026-07-11T00:13:51.922588+00:00"
+  },
+  "consola-sony-playstation-5-blanca-1280687691": {
+    "price": 250.0,
+    "last_notified_price": 250.0,
+    "title": "Consola Sony Playstation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-11T06:04:54.085624+00:00",
+    "last_seen": "2026-07-11T06:04:54.085624+00:00"
+  },
+  "consola-ps5-slim-blanca-1280686659": {
+    "price": 249.99,
+    "last_notified_price": 249.99,
+    "title": "Consola PS5 Slim Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-11T06:04:54.085655+00:00",
+    "last_seen": "2026-07-11T06:04:54.085655+00:00"
+  },
+  "consola-ps5-slim-1tb-blanca-y-negra-1280680352": {
+    "price": 290.0,
+    "last_notified_price": 290.0,
+    "title": "Consola PS5 Slim 1TB Blanca y Negra",
+    "console": "PS5",
+    "first_seen": "2026-07-11T06:04:54.085663+00:00",
+    "last_seen": "2026-07-11T06:04:54.085663+00:00"
   }
 }
