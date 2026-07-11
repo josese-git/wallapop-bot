@@ -1094,5 +1094,13 @@
     "console": "PS5",
     "first_seen": "2026-07-11T06:04:54.085663+00:00",
     "last_seen": "2026-07-11T06:04:54.085663+00:00"
+  },
+  "playstation-5-blanca-1280704515": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "PlayStation 5 Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-11T08:12:13.178490+00:00",
+    "last_seen": "2026-07-11T08:12:13.178490+00:00"
   }
 }
