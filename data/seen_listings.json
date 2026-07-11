@@ -1102,5 +1102,13 @@
     "console": "PS5",
     "first_seen": "2026-07-11T08:12:13.178490+00:00",
     "last_seen": "2026-07-11T08:12:13.178490+00:00"
+  },
+  "playstation-5-slim-1280742588": {
+    "price": 250.0,
+    "last_notified_price": 250.0,
+    "title": "PlayStation 5 Slim",
+    "console": "PS5",
+    "first_seen": "2026-07-11T09:51:01.556197+00:00",
+    "last_seen": "2026-07-11T09:51:01.556197+00:00"
   }
 }
