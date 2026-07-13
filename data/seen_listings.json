@@ -1142,5 +1142,21 @@
     "console": "PS5",
     "first_seen": "2026-07-13T01:11:21.113149+00:00",
     "last_seen": "2026-07-13T01:11:21.113149+00:00"
+  },
+  "lote-14-juegos-xbox-one-series-x-1281363479": {
+    "price": 200.0,
+    "last_notified_price": 200.0,
+    "title": "Lote 14 Juegos Xbox One / Series X",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-13T16:11:42.704152+00:00",
+    "last_seen": "2026-07-13T16:11:42.704152+00:00"
+  },
+  "consola-ps5-con-pegatinas-personalizadas-1281445090": {
+    "price": 299.99,
+    "last_notified_price": 299.99,
+    "title": "Consola PS5 con pegatinas personalizadas",
+    "console": "PS5",
+    "first_seen": "2026-07-13T16:11:42.704176+00:00",
+    "last_seen": "2026-07-13T16:11:42.704176+00:00"
   }
 }
