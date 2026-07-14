@@ -1190,5 +1190,21 @@
     "console": "PS5",
     "first_seen": "2026-07-14T06:29:33.092552+00:00",
     "last_seen": "2026-07-14T06:29:33.092552+00:00"
+  },
+  "ps5-normal-con-disco-y-2-mandos-1281787983": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "Ps5 Normal con disco y 2 mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-14T17:50:16.494009+00:00",
+    "last_seen": "2026-07-14T17:50:16.494009+00:00"
+  },
+  "consola-playstation-5-con-mando-1281784315": {
+    "price": 350.0,
+    "last_notified_price": 350.0,
+    "title": "Consola PlayStation 5 con mando",
+    "console": "PS5",
+    "first_seen": "2026-07-14T17:50:16.494033+00:00",
+    "last_seen": "2026-07-14T17:50:16.494033+00:00"
   }
 }
