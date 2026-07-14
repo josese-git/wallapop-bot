@@ -1174,5 +1174,21 @@
     "console": "Xbox Series X",
     "first_seen": "2026-07-13T23:37:45.842206+00:00",
     "last_seen": "2026-07-13T23:37:45.842206+00:00"
+  },
+  "starfield-constellation-edition-xbox-series-x-s-1281550959": {
+    "price": 180.0,
+    "last_notified_price": 180.0,
+    "title": "Starfield Constellation Edition Xbox Series X|S",
+    "console": "Xbox Series X",
+    "first_seen": "2026-07-14T06:29:33.092529+00:00",
+    "last_seen": "2026-07-14T06:29:33.092529+00:00"
+  },
+  "consola-playstation-5---2-mandos-1281579428": {
+    "price": 300.0,
+    "last_notified_price": 300.0,
+    "title": "Consola PlayStation 5 + 2 Mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-14T06:29:33.092552+00:00",
+    "last_seen": "2026-07-14T06:29:33.092552+00:00"
   }
 }
