@@ -1206,5 +1206,21 @@
     "console": "PS5",
     "first_seen": "2026-07-14T17:50:16.494033+00:00",
     "last_seen": "2026-07-14T17:50:16.494033+00:00"
+  },
+  "playstation-5-slim-1tb-disco-blanca-1281854993": {
+    "price": 290.0,
+    "last_notified_price": 290.0,
+    "title": "PlayStation 5 Slim 1TB Disco Blanca",
+    "console": "PS5",
+    "first_seen": "2026-07-15T03:57:25.072053+00:00",
+    "last_seen": "2026-07-15T03:57:25.072053+00:00"
+  },
+  "ps5-slim-1tb-con-2-mandos-1281860157": {
+    "price": 290.0,
+    "last_notified_price": 290.0,
+    "title": "PS5 Slim 1TB con 2 Mandos",
+    "console": "PS5",
+    "first_seen": "2026-07-15T03:57:25.072078+00:00",
+    "last_seen": "2026-07-15T03:57:25.072078+00:00"
   }
 }
